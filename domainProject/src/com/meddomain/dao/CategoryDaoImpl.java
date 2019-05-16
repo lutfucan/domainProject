@@ -23,13 +23,16 @@ public class CategoryDaoImpl implements CategoryDao {
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		Query<DomainCategory> query = session.createQuery("from DomainCategory");
+		System.out.println(query.getResultList());
 		return query.getResultList();
 	}
 
 	@Override
 	public void merge(DomainCategory category) {
 		Session session = sessionFactory.getCurrentSession();
-		session.merge(category);
+		if (category != null) {
+			session.merge(category);
+		}
 	}
 
 	@Override

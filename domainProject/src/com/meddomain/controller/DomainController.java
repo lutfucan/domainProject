@@ -45,7 +45,7 @@ public class DomainController {
 	public String addDomain(@ModelAttribute(name = "domain") Domain domain,
 			@RequestParam("registrar") Integer registrarId, 
 			@RequestParam("status") Integer statusId,
-			@RequestParam("categories") Integer[] categoriesId) {
+			@RequestParam(required = false, value="categories", defaultValue="0") Integer[] categoriesId) {
 
 		Registrar registrar = service.getRegistrar(Registrar.class, registrarId);
 		DomainStatus status = service.getStatus(DomainStatus.class, statusId);
